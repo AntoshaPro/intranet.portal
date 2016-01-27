@@ -9,6 +9,7 @@ use yii\db\Expression;
 use yii\debug\models\search\Profile;
 use yii\web\IdentityInterface;
 use yii\helpers\Security;
+use backend\models\Role;
 
 /**
  * User model
@@ -238,6 +239,11 @@ class User extends ActiveRecord implements IdentityInterface
     public function getProfile()
     {
         return $this->hasOne(Profile::className(), ['user_id' => 'id']);
+    }
+
+    public function getUsers()
+    {
+        return $this->hasMany(User::className(),['role_id' => 'id']);
     }
 
 }
