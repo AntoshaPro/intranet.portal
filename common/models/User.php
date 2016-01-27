@@ -10,7 +10,7 @@ use yii\debug\models\search\Profile;
 use yii\web\IdentityInterface;
 use yii\helpers\Security;
 use backend\models\Role;
-
+use backend\models\Status;
 /**
  * User model
  *
@@ -66,8 +66,10 @@ class User extends ActiveRecord implements IdentityInterface
         return [
 
             ['status_id', 'default', 'value' => self::STATUS_ACTIVE],
+            [['status_id'],'in', 'range'=>array_keys($this->getStatusList())],
             ['role_id', 'default', 'value' => 1],
             ['user_type_id', 'default', 'value' => 1],
+            [['user_type_id'],'in', 'range'=>array_keys($this->getUserTypeList())],
 
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
@@ -246,4 +248,99 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(User::className(),['role_id' => 'id']);
     }
 
+    /**
+     * get role relationship
+     *
+     */
+
+    public function getRole()
+    {
+        return $this->hasOne(Role::className(), ['id' => 'role_id']);
+    }
+
+    /**
+     * get role name
+     *
+     */
+
+    public function getRoleName()
+    {
+        return $this->role ? $this->role->role_name : '- no role -';
+    }
+
+    /**
+     * get list of roles for dropdown
+     */
+
+    public static function getRoleList()
+    {
+        $droptions = Role::find()->asArray()->all();
+        return ArrayHelper::map($droptions, 'id', 'role_name');
+    }
+
+    /**
+     * get status relation
+     *
+     */
+
+    public function getStatus()
+    {
+        return $this->hasOne(Status::className(), ['id' => 'status_id']);
+    }
+
+    /**
+     * * get status name
+     *
+     */
+
+    public function getStatusName()
+    {
+        return $this->status ? $this->status->status_name : '- no status -';
+    }
+
+    /**
+     * get list of statuses for dropdown
+     */
+
+    public static function getStatusList()
+    {
+        $droptions = Status::find()->asArray()->all();
+        return ArrayHelper::map($droptions, 'id', 'status_name');
+    }
+
+
+    public function getUserType()
+    {
+        return $this->hasOne(UserType::className(), ['id' => 'user_type_id']);
+    }
+
+    /**
+     * get user type name
+     *
+     */
+
+    public function getUserTypeName()
+    {
+        return $this->userType ? $this->userType->user_type_name : '- no user type -';
+    }
+
+    /**
+     * get list of user types for dropdown
+     */
+
+    public static function getUserTypeList()
+    {
+        $droptions = UserType::find()->asArray()->all();
+        return ArrayHelper::map($droptions, 'id', 'user_type_name');
+    }
+
+    /**
+     * get user type id
+     *
+     */
+
+    public function getUserTypeId()
+    {
+        return $this->userType ? $this->userType->id : 'none';
+    }
 }
