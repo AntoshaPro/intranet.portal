@@ -16,6 +16,7 @@ use yii\db\Expression;
  * @property string $id
  * @property string $user_id
  * @property string $first_name
+ * @property string $second_name
  * @property string $last_name
  * @property string $birthdate
  * @property integer $gender_id
@@ -62,7 +63,7 @@ class Profile extends \yii\db\ActiveRecord
             [['user_id', 'gender_id'], 'required'],
             [['user_id', 'gender_id'], 'integer'],
             [['gender_id'],'in', 'range'=>array_keys($this->getGenderList())],
-            [['first_name', 'last_name'], 'string'],
+            [['first_name', 'second_name','last_name'], 'string'],
             [['birthdate'], 'date', 'format'=>'Y-m-d'],
             [['birthdate', 'created_at', 'updated_at'], 'safe']
         ];
@@ -75,13 +76,14 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'birthdate' => 'Birthdate',
-            'gender_id' => 'Gender ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'user_id' => 'Логин',
+            'first_name' => 'Имя',
+            'second_name' => 'Отчество',
+            'last_name' => 'Фамилия',
+            'birthdate' => 'Дата рождения',
+            'gender_id' => 'Пол',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
         ];
     }
 
@@ -162,4 +164,6 @@ class Profile extends \yii\db\ActiveRecord
         $options = [];
         return Html::a($this->id, $url, $options);
     }
+
+
 }

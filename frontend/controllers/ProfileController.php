@@ -52,7 +52,7 @@ class ProfileController extends Controller
                 'model' => $this->findModel($already_exists),
             ]);
         } else {
-            return $this->redirect(['create']); //TODO перенаправить на заявку?
+            return $this->redirect(['idnex']); //TODO перенаправить на заявку?
         }
     }
 

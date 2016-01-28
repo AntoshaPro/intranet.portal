@@ -7,7 +7,7 @@ use common\models\PermissionHelpers;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Profile */
 
-"Учетная запись "$this->title = $model->user->username ;
+$this->title = "Учетная запись:  " . "\"" . $model->first_name . ' ' . $model->second_name . ' ' . $model->last_name. "\"";
 $this->params['breadcrumbs'][] = ['label' => 'Профили', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?php
             if(PermissionHelpers::userMustBeOwner('profile', $model->id)){
-                echo Html::a('Изменить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary'])
+                echo Html::a('Изменить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
             }
         ?>
         <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
