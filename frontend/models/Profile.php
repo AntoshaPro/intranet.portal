@@ -39,7 +39,7 @@ class Profile extends \yii\db\ActiveRecord
      * behaviors
      */
 
-    public function behaviors()
+   /* public function behaviors()
     {
         return [
             'timestamp' => [
@@ -51,7 +51,7 @@ class Profile extends \yii\db\ActiveRecord
                 'value' => new Expression('NOW()'),
             ],
         ];
-    }
+    }*/
 
 
     /**
