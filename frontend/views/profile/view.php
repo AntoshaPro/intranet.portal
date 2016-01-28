@@ -4,46 +4,54 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\models\PermissionHelpers;
 
-/* @var $this yii\web\View */
-/* @var $model frontend\models\Profile */
+/**
+ * @var yii\web\View $this
+ * @var frontend\models\Profile $model
+ */
 
-$this->title = "Учетная запись:  " . "\"" . $model->first_name . ' ' . $model->second_name . ' ' . $model->last_name. "\"";
-$this->params['breadcrumbs'][] = ['label' => 'Профили', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $model->user->username;
+
+$show_this_nav = PermissionHelpers::requireMinimumRole('SuperUser');
+
+$this->params['breadcrumbs'][] = ['label' => 'Профиль', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title ;
 ?>
 <div class="profile-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Профиль:  <?= Html::encode($this->title) ?></h1>
+
 
     <p>
-        <?php
-            if(PermissionHelpers::userMustBeOwner('profile', $model->id)){
-                echo Html::a('Изменить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
-            }
-        ?>
-        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Вы уверены, что хотите удалить?',
-                'method' => 'post',
-            ],
-        ]) ?>
+
+        <?php if (!Yii::$app->user->isGuest && $show_this_nav) {
+            echo Html::a('Update', ['update', 'id' => $model->id],
+                ['class' => 'btn btn-primary']);}?>
+
+
+        <?php if (!Yii::$app->user->isGuest && $show_this_nav) {
+            echo Html::a('Delete', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                    'method' => 'post',
+                ],
+            ]);}?>
+
     </p>
+
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //'id',
-            //'user_id',
-            'user.username',
-            'first_name:ntext',
-            'second_name:ntext',
-            'last_name:ntext',
+            ['attribute'=>'userLink', 'format'=>'raw', 'label'=>'Логин'],
+            'first_name',
+            'last_name',
             'birthdate',
             'gender.gender_name',
             'created_at',
             'updated_at',
+            'id',
         ],
-    ]) ?>
+    ])?>
 
 </div>

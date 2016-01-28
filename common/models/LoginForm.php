@@ -47,7 +47,7 @@ class LoginForm extends Model
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Не верное имя пользователя или пароль.');
             }
         }
     }
@@ -65,7 +65,7 @@ class LoginForm extends Model
 
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         } else {
-            throw new NotFoundHttpException('You shall not pass again');
+            throw new NotFoundHttpException('Ничего не вышло.');
         }
     }
 

@@ -99,15 +99,15 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             /* Your other attribute labels */
 
-            'roleName' => Yii::t('app', 'Role'),
-            'statusName' => Yii::t('app', 'Status'),
-            'profileId' => Yii::t('app', 'Profile'),
-            'profileLink' => Yii::t('app', 'Profile'),
-            'userLink' => Yii::t('app', 'User'),
-            'username' => Yii::t('app', 'User'),
-            'userTypeName' => Yii::t('app', 'User Type'),
-            'userTypeId' => Yii::t('app', 'User Type'),
-            'userIdLink' => Yii::t('app', 'ID'),
+            'roleName' => Yii::t('app', 'Роль'),
+            'statusName' => Yii::t('app', 'Статус'),
+            'profileId' => Yii::t('app', 'ID профиля'),
+            'profileLink' => Yii::t('app', 'Ссылка на профиль'),
+            'userLink' => Yii::t('app', 'Ссылка на пользователя'),
+            'username' => Yii::t('app', 'Логин пользователя'),
+            'userTypeName' => Yii::t('app', 'Название типа пользователя'),
+            'userTypeId' => Yii::t('app', 'ID типа пользователя'),
+            'userIdLink' => Yii::t('app', 'Ссылка на ID'),
 
         ];
     }
@@ -286,7 +286,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getRoleName()
     {
-        return $this->role ? $this->role->role_name : '- no role -';
+        return $this->role ? $this->role->role_name : '- нет роли -';
     }
 
     /**
@@ -366,7 +366,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getUserTypeId()
     {
-        return $this->userType ? $this->userType->id : 'none';
+        return $this->userType ? $this->userType->id : 'нет';
     }
 
     /**
@@ -386,7 +386,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getProfileId()
     {
-        return $this->profile ? $this->profile->id : 'none';
+        return $this->profile ? $this->profile->id : 'нет';
     }
 
     /**

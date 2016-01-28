@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-view">
 
-    <h1>Profile:  <?= Html::encode($this->title) ?></h1>
+    <h1>Профиль:  <?= Html::encode($this->title) ?></h1>
 
 
     <p>
