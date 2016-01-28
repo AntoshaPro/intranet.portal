@@ -40,9 +40,9 @@ class Role extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'role_name' => 'Role Name',
-            'role_value' => 'Role Value',
+            'id' => 'Идентификатор',
+            'role_name' => 'Название роли',
+            'role_value' => 'Значение роли',
         ];
     }
 }

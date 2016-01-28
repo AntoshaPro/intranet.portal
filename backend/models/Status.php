@@ -40,9 +40,9 @@ class Status extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'status_name' => 'Status Name',
-            'status_value' => 'Status Value',
+            'id' => 'Идентификатор',
+            'status_name' => 'Название статуса',
+            'status_value' => 'Значение статуса',
         ];
     }
 

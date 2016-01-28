@@ -40,9 +40,9 @@ class UserType extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_type_name' => 'User Type Name',
-            'user_type_value' => 'User Type Value',
+            'id' => 'Идентификатор',
+            'user_type_name' => 'Название типа пользователя',
+            'user_type_value' => 'Значение типа пользователя',
         ];
     }
 }

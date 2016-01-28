@@ -2,42 +2,56 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\PermissionHelpers;
 
-/* @var $this yii\web\View */
-/* @var $model frontend\models\Profile */
+/**
+ * @var yii\web\View $this
+ * @var frontend\models\Profile $model
+ */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Profiles', 'url' => ['index']];
+$this->title = $model->user->username;
+
+$show_this_nav = PermissionHelpers::requireMinimumRole('SuperUser');
+
+$this->params['breadcrumbs'][] = ['label' => 'Профили', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Profile:  <?= Html::encode($this->title) ?></h1>
+
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+
+        <?php if (!Yii::$app->user->isGuest && $show_this_nav) {
+            echo Html::a('Редактировать', ['update', 'id' => $model->id],
+                ['class' => 'btn btn-primary']);}?>
+
+
+        <?php if (!Yii::$app->user->isGuest && $show_this_nav) {
+            echo Html::a('Удалить', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => Yii::t('app', 'Серёзно? Удалить эту запись?'),
+                    'method' => 'post',
+                ],
+            ]);}?>
+
     </p>
+
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'user_id',
-            'first_name:ntext',
-            'second_name:ntext',
-            'last_name:ntext',
+            ['attribute'=>'userLink', 'format'=>'raw'],
+            'first_name',
+            'last_name',
             'birthdate',
-            'gender_id',
+            'gender.gender_name',
             'created_at',
             'updated_at',
+            'id',
         ],
-    ]) ?>
+    ])?>
 
 </div>

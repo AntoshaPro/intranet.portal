@@ -115,7 +115,7 @@ class UserTypeController extends Controller
         if (($model = UserType::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('Запрашиваемая страница не найдена.');
         }
     }
 }
