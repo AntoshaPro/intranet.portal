@@ -53,7 +53,7 @@ initial-scale=1">
 
             NavBar::begin([
 
-                'brandLabel' => 'Yii 2 Build <i class="fa fa-plug"></i> Admin',
+                'brandLabel' => 'Панел администратора портала <i class="fa fa-plug"></i> Админ',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -64,7 +64,7 @@ initial-scale=1">
 
             NavBar::begin([
 
-                'brandLabel' => 'Yii 2 Build <i class="fa fa-plug"></i>',
+                'brandLabel' => 'ФГУП НПЦАП Панель администратора <i class="fa fa-plug"></i>',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -80,25 +80,25 @@ initial-scale=1">
 
         if (!Yii::$app->user->isGuest && $is_admin) {
 
-            $menuItems[] = ['label' => 'Users', 'url' => ['user/index']];
+            $menuItems[] = ['label' => 'Пользователи', 'url' => ['user/index']];
 
-            $menuItems[] = ['label' => 'Profiles', 'url' => ['profile/index']];
+            $menuItems[] = ['label' => 'Профили', 'url' => ['profile/index']];
 
-            $menuItems[] = ['label' => 'Roles', 'url' => ['role/index']];
+            $menuItems[] = ['label' => 'Роли', 'url' => ['role/index']];
 
-            $menuItems[] = ['label' => 'User Types', 'url' => ['user-type/index']];
+            $menuItems[] = ['label' => 'Типы Пользователей', 'url' => ['user-type/index']];
 
-            $menuItems[] = ['label' => 'Statuses', 'url' => ['status/index']];
+            $menuItems[] = ['label' => 'Статусы', 'url' => ['status/index']];
 
         }
 
         if (Yii::$app->user->isGuest) {
 
-            $menuItems[] = ['label' => 'Login', 'url' => ['site/login']];
+            $menuItems[] = ['label' => 'Войти', 'url' => ['site/login']];
 
         } else {
 
-            $menuItems[] = ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+            $menuItems[] = ['label' => 'Выход (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']
             ];
@@ -135,7 +135,7 @@ initial-scale=1">
 
         <div class="container">
 
-            <p class="pull-left">&copy; Yii 2 Build <?= date('Y') ?></p>
+            <p class="pull-left">&copy; ФГУП НПЦАП <?= date('Y') ?></p>
 
             <p class="pull-right"><?= Yii::powered() ?></p>
 
