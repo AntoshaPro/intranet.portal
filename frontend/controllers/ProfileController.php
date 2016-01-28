@@ -47,14 +47,15 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ProfileSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        if($already_exists = RecordHelpers::userHas('profile')){
+            return $this->render('view',[
+                'model' => $this->findModel($already_exists),
+            ]);
+        } else {
+            return $this->redirect(['create']); //TODO перенаправить на заявку?
+        }
     }
+
 
     /**
      * Displays a single Profile model.
