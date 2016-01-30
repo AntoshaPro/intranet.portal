@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10e3aceae81ca0ca3e41965b798e6818",
-    "content-hash": "b8161a61750b0639aa88ffe19f295a4a",
+    "hash": "81099be01201622354aa2767e3048814",
+    "content-hash": "872462db7f173e733fb093e3ddb3a8bb",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -631,6 +631,53 @@
                 "yii2"
             ],
             "time": "2016-01-10 14:40:08"
+        },
+        {
+            "name": "marekpetras/yii2-calendarview-widget",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marekpetras/yii2-calendarview-widget.git",
+                "reference": "e4e2ca6ea822e747ab82fdf00e47ddb9595b5740"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marekpetras/yii2-calendarview-widget/zipball/e4e2ca6ea822e747ab82fdf00e47ddb9595b5740",
+                "reference": "e4e2ca6ea822e747ab82fdf00e47ddb9595b5740",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-bootstrap": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "marekpetras\\calendarview\\": "/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marek Petras",
+                    "email": "mark@markpetras.eu"
+                }
+            ],
+            "description": "CalendarView widget for Yii 2 Framework.",
+            "homepage": "https://github.com/marekpetras/yii2-calendarview-widget",
+            "keywords": [
+                "activerecord",
+                "calendar",
+                "dataprovider",
+                "extension",
+                "view",
+                "widget",
+                "yii2"
+            ],
+            "time": "2015-11-10 04:11:31"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1306,7 +1353,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kartik-v/yii2-social": 20
+        "kartik-v/yii2-social": 20,
+        "marekpetras/yii2-calendarview-widget": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
