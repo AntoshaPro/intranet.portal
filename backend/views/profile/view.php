@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-view">
 
-    <h1>Профиль:  <?= Html::encode($this->title) ?></h1>
+    <h1>Профиль пользователя:  <?= Html::encode($this->title) ?></h1>
 
 
     <p>
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             echo Html::a('Удалить', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
-                    'confirm' => Yii::t('app', 'Серёзно? Удалить эту запись?'),
+                    'confirm' => Yii::t('app', 'Серьёзно? Ты действительно хочешь удалить этот профиль?'),
                     'method' => 'post',
                 ],
             ]);}?>
@@ -43,14 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            ['attribute'=>'userLink', 'format'=>'raw', 'label'=>'Логин пользователя'],
+            ['attribute'=>'userLink', 'format'=>'raw', 'label'=>'Ссылка на атрибуты'],
             'first_name',
             'last_name',
             'birthdate',
             'gender.gender_name',
             'created_at',
             'updated_at',
-            ['attribute'=>'id','label'=> 'ID пользователя']
+            //'id',
         ],
     ])?>
 

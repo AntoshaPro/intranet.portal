@@ -398,7 +398,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $url = Url::to(['profile/view', 'id'=>$this->profileId]);
         $options = [];
-        return Html::a($this->profile ? 'profile' : 'none', $url, $options);
+        return Html::a($this->profile ? $this->username : 'none', $url, $options);
     }
 
     /**

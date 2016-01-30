@@ -76,7 +76,7 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'Логин',
+            'user_id' => 'ID пользователя',
             'first_name' => 'Имя',
             'second_name' => 'Отчество',
             'last_name' => 'Фамилия',
