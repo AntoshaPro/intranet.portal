@@ -165,5 +165,9 @@ class Profile extends \yii\db\ActiveRecord
         return Html::a($this->id, $url, $options);
     }
 
+    public function getProfile(){
+        return $this->hasOne(Profile::className(),['gender_id' => 'id']);
+    }
+
 
 }

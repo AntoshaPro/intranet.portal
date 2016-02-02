@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
+$this->title = 'Логин';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'username') ?>
+                <?= $form->field($model, 'username')->label('Юзернамэ') ?>
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 

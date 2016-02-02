@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use frontend\models\Profile;
 
 AppAsset::register($this);
 ?>
@@ -43,7 +44,13 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = ['label' => 'Личный кабинет', 'url' => ['/profile/view']];
+
+            $menuItems[] = [
+            'label' => 'Личный кабинет',
+            'url'=> ['profile/index'],
+            'linkOptions'=>['data-method'=>'post']
+            ];
+
         $menuItems[] = [
             'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
             'url' => ['/site/logout'],

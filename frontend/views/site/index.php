@@ -13,23 +13,16 @@ $this->title = 'ФГУП НПЦАП';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Корпоративный портал ФГУП НПЦАП!</h1>
+        <h1>Корпоративный портал <br> ФГУП НПЦАП</h1>
         <?php if(Yii::$app->user->isGuest){
-            echo Html::a('Подайте заявку на регистрацию',['site/signup'],
+            echo Html::a('Начать работу',['site/login'],
                 ['class'=> 'btn btn-lg btn-success']
                 );} ?>
-
-        <p class="lead">Мы рады приветсвовать Вас!</p>
-
-        <p><a class="btn btn-lg btn-success" href="#">НАЧАТЬ РАБОТУ</a></p>
-        <br>
-
-
     </div>
 
     <?php
 
-    echo Collapse::widget([
+    /*echo Collapse::widget([
 
         'items' => [
 
@@ -87,109 +80,22 @@ $this->title = 'ФГУП НПЦАП';
 
     Modal::end();
 
-    ?>
+    */?>
 
-    <br/>
-    <br/>
 
     <?Php
-
+/*
     echo Alert::widget([
 
         'options' => [
             'class' => 'alert-info',
         ],
         'body' => 'Launch your project like a rocket...',
-    ]);
+    ]);*/
     ?>
 
     <div class="body-content">
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Free</h2>
-
-                <p>
-                    <?php
-
-                    if (!Yii::$app->user->isGuest) {
-
-                        echo Yii::$app->user->identity->username . ' is doing cool stuff. ';
-                    }
-
-                    ?>
-
-
-                    Starting with this free, open source Yii 2 template and it will save you
-                    a lot of time.  You can deliver projects to the customer quickly, with
-                    a  lot of boilerplate already taken care of for you, so you can concentrate
-                    on the complicated stuff.</p>
-
-                <p>
-
-                    <a class="btn btn-default" href="http://www.yiiframework.com/doc-2.0/guide-index.html">Yii Documentation &raquo;</a>
-
-                </p>
-
-                <?php
-
-                echo FacebookPlugin::widget([
-
-                    'type'=>FacebookPlugin::LIKE,
-                    'settings' => []
-
-                ]);
-
-                ?>
-
-            </div>
-            <div class="col-lg-4">
-                <h2>Advantages</h2>
-
-                <p>
-
-                    Ease of use is a huge advantage.  We've simplifiled RBAC and given you Free/Paid
-                    user type out of the box.  The Social plugins are so quick and easy to install,
-                    you will love it!
-
-                </p>
-
-                <p>
-
-                    <a class="btn btn-default" href="http://intranet.portal/forum/">Yii Forum &raquo;</a>
-
-                </p>
-
-                <?php
-
-                echo FacebookPlugin::widget([
-
-                    'type'=>FacebookPlugin::COMMENT,
-                    'settings' => ['href'=>'http://intranet.portal','width'=>'350']
-
-                ]);
-
-                ?>
-            </div>
-            <div class="col-lg-4">
-                <h2>Code Quick, Code Right!</h2>
-
-                <p>
-
-                    Leverage the power of the awesome Yii 2 framework with this enhanced template.
-                    Based Yii 2's advanced template, you get a full frontend and backend
-                    implementation that features rich UI for backend management.
-
-                </p>
-
-                <p>
-
-                    <a class="btn btn-default" href="http://intranet.portal/extensions/">Yii Extensions &raquo;</a>
-
-                </p>
-
-            </div>
         </div>
 
     </div>
-</div>

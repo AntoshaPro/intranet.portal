@@ -18,7 +18,6 @@ class PermissionHelpers
 
         }
 
-
     }
 
     public static function requireStatus($status_name)

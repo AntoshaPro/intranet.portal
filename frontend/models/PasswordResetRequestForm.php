@@ -2,8 +2,8 @@
 namespace frontend\models;
 
 use common\models\User;
-use common\models\ValueHelpers;
 use yii\base\Model;
+use common\models\ValueHelpers;
 
 /**
  * Password reset request form
@@ -15,6 +15,7 @@ class PasswordResetRequestForm extends Model
     /**
      * @inheritdoc
      */
+
     public function rules()
     {
         return [
@@ -34,11 +35,13 @@ class PasswordResetRequestForm extends Model
      *
      * @return boolean whether the email was send
      */
+
     public function sendEmail()
     {
         /* @var $user User */
+
         $user = User::findOne([
-            'status_id' => self::STATUS_ACTIVE,
+            'status_id' => ValueHelpers::getStatusId('Active'),
             'email' => $this->email,
         ]);
 

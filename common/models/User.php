@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use common\models\ValueHelpers;
+use yii\filters\VerbFilter;
 /**
  * User model
  *
@@ -47,7 +48,7 @@ class User extends ActiveRecord implements IdentityInterface
      * behaviors
      */
 
-    public function behaviors()
+    /*public function behaviors()
     {
         return [
             'timestamp' => [
@@ -57,6 +58,46 @@ class User extends ActiveRecord implements IdentityInterface
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
                 'value' => new Expression('NOW()'),
+            ],
+        ];
+    }*/
+
+    public function behaviors()
+    {
+        return [
+
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'only' => ['index', 'view','create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['index', 'create', 'view',],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return PermissionHelpers::requireMinimumRole('Admin')
+                            && PermissionHelpers::requireStatus('Active');
+                        }
+                    ],
+                    [
+                        'actions' => [ 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return PermissionHelpers::requireMinimumRole('SuperUser')
+                            && PermissionHelpers::requireStatus('Active');
+                        }
+                    ],
+
+                ],
+
+            ],
+
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
             ],
         ];
     }
@@ -403,7 +444,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * get user id Link
-     *
+     *иу
      */
 
     public function getUserIdLink()

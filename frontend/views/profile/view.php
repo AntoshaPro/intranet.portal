@@ -11,7 +11,7 @@ use common\models\PermissionHelpers;
 
 $this->title = $model->user->username;
 
-$show_this_nav = PermissionHelpers::requireMinimumRole('SuperUser');
+$show_this_nav = PermissionHelpers::requireMinimumRole('User');
 
 $this->params['breadcrumbs'][] = ['label' => 'Профиль', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title ;

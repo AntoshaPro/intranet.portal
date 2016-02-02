@@ -7,16 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\search\ProfileSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Профили';
+$this->title = 'Профиль';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Profile', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать профайл', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

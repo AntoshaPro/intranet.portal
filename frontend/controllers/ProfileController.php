@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use common\models\PermissionHelpers;
 use common\models\RecordHelpers;
+use yii\filters\AccessControl;
 
 /**
  * ProfileController implements the CRUD actions for Profile model.
@@ -20,7 +21,7 @@ class ProfileController extends Controller
     {
         return [
             'access' => [
-                'class' => \yii\filters\AccessControl::className(),
+                'class' => AccessControl::className(),
                 'only' => ['index', 'view','create', 'update', 'delete'],
                 'rules' => [
                     [
@@ -30,23 +31,6 @@ class ProfileController extends Controller
                     ],
 
                 ],
-            ],
-
-            'access2' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'only' => ['index', 'view','create', 'update', 'delete'],
-                'rules' => [
-                    [
-                        'actions' => ['index', 'view','create', 'update', 'delete'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return PermissionHelpers::requireStatus('Active');
-                        }
-                    ],
-
-                ],
-
             ],
 
             'verbs' => [
@@ -69,7 +53,7 @@ class ProfileController extends Controller
                 'model' => $this->findModel($already_exists),
             ]);
         } else {
-            return $this->redirect(['idnex']); //TODO перенаправить на заявку?
+            return $this->redirect(['create']); //TODO перенаправить на заявку?
         }
     }
 
