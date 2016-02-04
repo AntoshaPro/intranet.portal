@@ -18,15 +18,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status_message_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'body')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'status_message_description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'body')->textarea(['maxlength'=> 2025, 'rows'=>12])?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

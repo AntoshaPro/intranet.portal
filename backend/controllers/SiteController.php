@@ -7,13 +7,15 @@ use yii\web\Controller;
 use common\models\LoginForm;
 use yii\filters\VerbFilter;
 
+
 /**
  * Site controller
  */
 class SiteController extends Controller
 {
+
     /**
-     * @inheritdoc
+     * @return array
      */
     public function behaviors()
     {

@@ -8,16 +8,45 @@ use backend\models\search\UserTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use common\models\PermissionHelpers;
 
 /**
  * UserTypeController implements the CRUD actions for UserType model.
  */
 class UserTypeController extends Controller
 {
+    /**
+     * @return array
+     */
     public function behaviors()
     {
         return [
-            'verbs' => [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'create', 'update'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule, $action){
+                            return PermissionHelpers::requireMinimumRole('Admin') &&
+                            PermissionHelpers::requireStatus('Active');
+                        }
+                    ],
+                    [
+                        'actions' => ['delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule, $action){
+                            return PermissionHelpers::requireMinimumRole('SuperUser') &&
+                            PermissionHelpers::requireStatus('Active');
+                        }
+                    ],
+                ],
+            ],
+            'verbs'=> [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],

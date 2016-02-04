@@ -1,10 +1,12 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
+use common\models\PermissionHelpers;
 use Yii;
 use backend\models\StatusMessage;
-use frontend\models\search\StatusMessageSearch;
+use backend\models\search\StatusMessageSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,10 +16,37 @@ use yii\filters\VerbFilter;
  */
 class StatusMessageController extends Controller
 {
+    /**
+     * @return array
+     */
     public function behaviors()
     {
         return [
-            'verbs' => [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index', 'view', 'create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'create', 'update'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule, $action){
+                            return PermissionHelpers::requireMinimumRole('Admin') &&
+                            PermissionHelpers::requireStatus('Active');
+                        }
+                    ],
+                    [
+                        'actions' => ['delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function($rule, $action){
+                            return PermissionHelpers::requireMinimumRole('SuperUser') &&
+                            PermissionHelpers::requireStatus('Active');
+                        }
+                    ],
+                ],
+            ],
+            'verbs'=> [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
