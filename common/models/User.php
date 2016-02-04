@@ -6,7 +6,7 @@ use yii\base\NotSupportedException;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\web\IdentityInterface;
-use yii\base\Security;
+use yii\helpers\Security;
 use backend\models\Role;
 use backend\models\Status;
 use backend\models\UserType;
@@ -15,7 +15,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use common\models\ValueHelpers;
-use yii\filters\VerbFilter;
+
 /**
  * User model
  *
@@ -36,7 +36,7 @@ use yii\filters\VerbFilter;
 class User extends ActiveRecord implements IdentityInterface
 {
 
-    const STATUS_ACTIVE = 1;
+    //const STATUS_ACTIVE = 1;
 
 
     public static function tableName()
@@ -48,7 +48,7 @@ class User extends ActiveRecord implements IdentityInterface
      * behaviors
      */
 
-    /*public function behaviors()
+    public function behaviors()
     {
         return [
             'timestamp' => [
@@ -60,58 +60,17 @@ class User extends ActiveRecord implements IdentityInterface
                 'value' => new Expression('NOW()'),
             ],
         ];
-    }*/
-
-    public function behaviors()
-    {
-        return [
-
-            'access' => [
-                'class' => \yii\filters\AccessControl::className(),
-                'only' => ['index', 'view','create', 'update', 'delete'],
-                'rules' => [
-                    [
-                        'actions' => ['index', 'create', 'view',],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return PermissionHelpers::requireMinimumRole('Admin')
-                            && PermissionHelpers::requireStatus('Active');
-                        }
-                    ],
-                    [
-                        'actions' => [ 'update', 'delete'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                        'matchCallback' => function ($rule, $action) {
-                            return PermissionHelpers::requireMinimumRole('SuperUser')
-                            && PermissionHelpers::requireStatus('Active');
-                        }
-                    ],
-
-                ],
-
-            ],
-
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
     }
 
     /**
      * validation rules
      */
 
-
     public function rules()
     {
         return [
 
-            ['status_id', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status_id', 'default', 'value' => ValueHelpers::getStatusId('Active')],
             [['status_id'],'in', 'range'=>array_keys($this->getStatusList())],
 
             ['role_id', 'default', 'value' => 1],
@@ -138,21 +97,21 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
+
             /* Your other attribute labels */
 
-            'roleName' => Yii::t('app', 'Роль'),
-            'statusName' => Yii::t('app', 'Статус'),
-            'profileId' => Yii::t('app', 'ID профиля'),
-            'profileLink' => Yii::t('app', 'Ссылка на профиль'),
-            'userLink' => Yii::t('app', 'Ссылка на пользователя'),
-            'username' => Yii::t('app', 'Логин пользователя'),
-            'userTypeName' => Yii::t('app', 'Название типа пользователя'),
-            'userTypeId' => Yii::t('app', 'ID типа пользователя'),
-            'userIdLink' => Yii::t('app', 'Ссылка на ID'),
+            'roleName' => Yii::t('app', 'Role'),
+            'statusName' => Yii::t('app', 'Status'),
+            'profileId' => Yii::t('app', 'Profile'),
+            'profileLink' => Yii::t('app', 'Profile'),
+            'userLink' => Yii::t('app', 'User'),
+            'username' => Yii::t('app', 'User'),
+            'userTypeName' => Yii::t('app', 'User Type'),
+            'userTypeId' => Yii::t('app', 'User Type'),
+            'userIdLink' => Yii::t('app', 'ID'),
 
         ];
     }
-
 
     /**
      * @findIdentity
@@ -163,15 +122,10 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne(['id' => $id, 'status_id' => ValueHelpers::getStatusId('Active')]);
     }
 
-
-    /**
-     * @findIdentityByAccessToken
-     */
-
-
     /**
      * @inheritdoc
      */
+
     public static function findIdentityByAccessToken($token, $type = null)
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
@@ -182,7 +136,6 @@ class User extends ActiveRecord implements IdentityInterface
      * broken into 2 lines to avoid wordwrapping * @param string $username
      * @return static|null
      */
-
 
     public static function findByUsername($username)
     {
@@ -196,12 +149,6 @@ class User extends ActiveRecord implements IdentityInterface
      * @return static|null
      */
 
-    /**
-     * Finds user by password reset token
-     *
-     * @param string $token password reset token
-     * @return static|null
-     */
     public static function findByPasswordResetToken($token)
     {
         if (!static::isPasswordResetTokenValid($token)) {
@@ -220,6 +167,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token password reset token
      * @return boolean
      */
+
     public static function isPasswordResetTokenValid($token)
     {
         if (empty($token)) {
@@ -295,7 +243,6 @@ class User extends ActiveRecord implements IdentityInterface
      * broken into 2 lines to avoid wordwrapping
      */
 
-
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString()  . '_' . time();
@@ -308,6 +255,11 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
     }
 
     /**
@@ -327,7 +279,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getRoleName()
     {
-        return $this->role ? $this->role->role_name : '- нет роли -';
+        return $this->role ? $this->role->role_name : '- no role -';
     }
 
     /**
@@ -363,10 +315,33 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * get list of statuses for dropdown
      */
+
     public static function getStatusList()
     {
         $droptions = Status::find()->asArray()->all();
         return ArrayHelper::map($droptions, 'id', 'status_name');
+    }
+
+    /**
+     * @getProfileId
+     *
+     */
+
+    public function getProfileId()
+    {
+        return $this->profile ? $this->profile->id : 'none';
+    }
+
+    /**
+     * @getProfileLink
+     *
+     */
+
+    public function getProfileLink()
+    {
+        $url = Url::to(['profile/view', 'id'=>$this->profileId]);
+        $options = [];
+        return Html::a($this->profile ? 'profile' : 'none', $url, $options);
     }
 
     /**
@@ -407,44 +382,12 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getUserTypeId()
     {
-        return $this->userType ? $this->userType->id : 'нет';
-    }
-
-    /**
-     * @getProfile
-     *
-     */
-
-    public function getProfile()
-    {
-        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
-    }
-
-    /**
-     * @getProfileId
-     *
-     */
-
-    public function getProfileId()
-    {
-        return $this->profile ? $this->profile->id : 'нет';
-    }
-
-    /**
-     * @getProfileLink
-     *
-     */
-
-    public function getProfileLink()
-    {
-        $url = Url::to(['profile/view', 'id'=>$this->profileId]);
-        $options = [];
-        return Html::a($this->profile ? $this->username : 'none', $url, $options);
+        return $this->userType ? $this->userType->id : 'none';
     }
 
     /**
      * get user id Link
-     *иу
+     *
      */
 
     public function getUserIdLink()
@@ -465,6 +408,5 @@ class User extends ActiveRecord implements IdentityInterface
         $options = [];
         return Html::a($this->username, $url, $options);
     }
-
 
 }

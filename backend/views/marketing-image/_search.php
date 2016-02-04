@@ -23,6 +23,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'marketing_image_caption') ?>
 
+    <?= $form->field($model, 'marketing_image_caption_title') ?>
+
     <?= $form->field($model, 'marketing_image_is_featured')->dropDownList($model->marketingImageIsFeaturedList,
         ['prompt' => 'Please Choose One']);?>
 

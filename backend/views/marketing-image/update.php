@@ -17,7 +17,15 @@ $this->params['breadcrumbs'][] = 'Update';
     <br>
     <div>
         <?php
-        echo Html::img('/'. $model->marketing_image_path, ['width' => '600px']);
+        echo Html::img('/'. $model->marketing_image_path . '?'. 'time='. time() , ['width' => '600px']);
+
+        ?>
+    </div>
+    <br>
+    <div>
+        <?php
+
+        echo Html::img('/'. $model->marketing_thumb_path . '?'. 'time='. time());
 
         ?>
 

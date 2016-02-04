@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'marketing_image_caption') ?>
 
+    <?= $form->field($model, 'marketing_image_caption_title') ?>
+
     <?= $form->field($model, 'marketing_image_is_featured')->dropDownList($model->marketingImageIsFeaturedList,
         ['prompt' => 'Please Choose One']);?>
 
@@ -27,6 +29,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'status_id')->dropDownList($model->statusList);?>
 
     <?= $form->field($model, 'file')->fileInput(); ?>
+
+
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update',

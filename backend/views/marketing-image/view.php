@@ -34,17 +34,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </div>
     <br>
+    <div>
+        <?php
+
+        echo Html::img('/'. $model->marketing_thumb_path . '?'. 'time='. time());
+
+        ?>
+
+    </div>
+    <br>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
+            'marketing_image_caption_title',
             'marketing_image_caption',
             'marketing_image_path',
+            'marketing_thumb_path',
             //'marketing_image_name',
             ['attribute' => 'marketing_image_is_featured', 'format' => 'boolean'],
             ['attribute' => 'marketing_image_is_active', 'format' => 'boolean'],
-            'marketing_image_weight',
             'status.status_name',
             'created_at',
             'updated_at',

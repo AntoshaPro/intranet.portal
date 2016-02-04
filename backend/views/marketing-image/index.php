@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]
     ]);
 
+
     ?>
 
     <p>
@@ -49,15 +50,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'marketing_image_path',
             'marketing_image_name',
+            'marketing_image_caption_title',
             'marketing_image_caption',
             ['attribute'=>'marketing_image_is_featured', 'format'=>'boolean'],
             ['attribute'=>'marketing_image_is_active', 'format'=>'boolean'],
-            'marketing_image_weight',
+
             'statusName',
-            // 'created_at',
-            // 'updated_at',
+            //'created_at',
+            //'updated_at',
+            'thumb:html',
 
             ['class' => 'yii\grid\ActionColumn'],
+
         ],
     ]); ?>
 

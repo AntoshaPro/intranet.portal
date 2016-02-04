@@ -12,6 +12,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\MailCall;
 
 /**
  * Site controller
@@ -151,8 +152,12 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
+
                 if (Yii::$app->getUser()->login($user)) {
+                    MailCall::onMailableAction('signup', 'site');
+
                     return $this->goHome();
+
                 }
             }
         }

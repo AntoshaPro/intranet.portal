@@ -21,10 +21,8 @@ $this->title = 'НПЦАП';
                 );} ?>
     </div>
 
-    </body>
-    </html>
     <div class="body-content">
-
+    <?= Html::img(Yii::$app->urlManagerBackend->baseUrl.'/uploads/image.png');?>
         </div>
 
     </div>
