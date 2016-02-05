@@ -52,7 +52,7 @@ initial-scale=1">
 
             NavBar::begin([
 
-                'brandLabel' => 'Yii 2 Built <i class="fa fa-plug"></i> Admin',
+                'brandLabel' => 'НПЦАП АДМИНКА <i class="fa fa-plug"></i> Админ',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -63,7 +63,7 @@ initial-scale=1">
 
             NavBar::begin([
 
-                'brandLabel' => 'Yii 2 Built <i class="fa fa-plug"></i>',
+                'brandLabel' => 'НПЦАП <i class="fa fa-plug"></i>',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -74,12 +74,12 @@ initial-scale=1">
 
         if (Yii::$app->user->isGuest) {
 
-            $menuItemsLogOut[] = ['label' => 'Login', 'url' => ['site/login']];
+            $menuItemsLogOut[] = ['label' => 'Войти', 'url' => ['site/login']];
 
         } else {
 
             $menuItemsLogOut[] = [
-                'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']
             ];
@@ -96,30 +96,30 @@ initial-scale=1">
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
 
-                    ['label' => 'Users', 'items' => [
-                        ['label' => 'Users', 'url' => ['user/index']],
-                        ['label' => 'Profiles', 'url' => ['profile/index']],
-                        ['label' => 'Something else here', 'url' => ['#']],
+                    ['label' => 'Пользователи', 'items' => [
+                        ['label' => 'Пользователи', 'url' => ['user/index']],
+                        ['label' => 'Профили', 'url' => ['profile/index']],
+                       // ['label' => 'Something else here', 'url' => ['#']],
                     ]],
 
-                    ['label' => 'Support', 'items' => [
-                        ['label' => 'Support Requests', 'url' => ['content/index']],
-                        ['label' => 'Status Messages', 'url' => ['status-message/index']],
-                        ['label' => 'FAQ', 'url' => ['faq/index']],
-                        ['label' => 'FAQ Categories', 'url' => ['faq-category/index']],
+                    ['label' => 'Поддержка', 'items' => [
+                        ['label' => 'Запрос в поддержку', 'url' => ['content/index']],
+                        ['label' => 'Найстройка автоответчика', 'url' => ['status-message/index']],
+                        ['label' => 'ЧАВО', 'url' => ['faq/index']],
+                        ['label' => 'ЧАВО Категории', 'url' => ['faq-category/index']],
                     ]],
 
-                    ['label' => 'RBAC', 'items' => [
-                        ['label' => 'Roles', 'url' => ['role/index']],
-                        ['label' => 'User Types', 'url' => ['user-type/index']],
-                        ['label' => 'Statuses', 'url' => ['status/index']],
+                    ['label' => 'Контроль доступа', 'items' => [
+                        ['label' => 'Роли', 'url' => ['role/index']],
+                        ['label' => 'Типы пользователей', 'url' => ['user-type/index']],
+                        ['label' => 'Статусы', 'url' => ['status/index']],
                     ]],
 
-                    ['label' => 'Content', 'items' => [
-                        ['label' => 'Content', 'url' => ['content/index']],
-                        ['label' => 'Status Messages', 'url' => ['status-message/index']],
-                        ['label' => 'FAQ', 'url' => ['faq/index']],
-                        ['label' => 'FAQ Category', 'url' => ['faq-category/index']],
+                    ['label' => 'Контент', 'items' => [
+                        ['label' => 'Контент', 'url' => ['content/index']],
+                        ['label' => 'Автоответчик', 'url' => ['status-message/index']],
+                        ['label' => 'ЧАВО', 'url' => ['faq/index']],
+                        ['label' => 'Категории ЧАВО', 'url' => ['faq-category/index']],
                     ]],
 
                 ],
@@ -128,7 +128,7 @@ initial-scale=1">
 
         }
 
-        $menuItems = [['label' => 'Home', 'url' => ['site/index']],
+        $menuItems = [['label' => 'Главная', 'url' => ['site/index']],
         ];
 
         echo Nav::widget([
@@ -158,7 +158,7 @@ initial-scale=1">
 
         <div class="container">
 
-            <p class="pull-left">&copy; Yii 2 Build <?= date('Y') ?></p>
+            <p class="pull-left">&copy; НПЦАП <?= date('Y') ?></p>
 
             <p class="pull-right"><?= Yii::powered() ?></p>
 

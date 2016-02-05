@@ -1,146 +1,217 @@
 <?php
 
-namespace backend\models;
-
-use Yii;
-use yii\db\ActiveRecord;
-use yii\db\Expression;
-use yii\helpers\ArrayHelper;
-use yii\behaviors\TimestampBehavior;
+use yii\helpers\Html;
+use common\models\PermissionHelpers;
 
 /**
- * This is the model class for table "marketing_image".
- *
- * @property string $id
- * @property string $marketing_image_path
- * @property string $marketing_image_name
- * @property integer $marketing_image_is_featured
- * @property integer $marketing_image_is_active
- * @property integer $status_id
- * @property string $created_at
- * @property string $updated_at
- *
- * @property Status $status
+ * @var yii\web\View $this
  */
-class MarketingImage extends \yii\db\ActiveRecord
-{
 
-    public $file;
+$this->title = 'Admin Yii 2 Start';
 
-    /**
-     * @inheritdoc
-     */
+if (!Yii::$app->user->isGuest){
 
-    public static function tableName()
-    {
-        return 'marketing_image';
-    }
-
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => TimeStampBehavior::className(),
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ],
-                'value' => new Expression('NOW()'),
-            ],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function rules()
-    {
-        return [
-            [['marketing_image_path', 'marketing_image_name', 'marketing_image_weight'], 'required'],
-            ['marketing_image_weight', 'default', 'value' => 100 ],
-            ['marketing_image_is_featured', 'default', 'value' => 0 ],
-            ['marketing_image_is_active', 'default', 'value' => 0 ],
-            ['file', 'required', 'message' => '{attribute} can\'t be blank', 'on'=>'create'],
-            [['marketing_image_name', 'marketing_image_path'], 'trim'],
-            [['marketing_image_is_featured', 'marketing_image_is_active', 'marketing_image_weight', 'status_id'], 'integer'],
-            [['marketing_image_is_featured'],'in', 'range'=>array_keys($this->getMarketingImageIsFeaturedList())],
-            [['marketing_image_is_active'],'in', 'range'=>array_keys($this->getMarketingImageIsActiveList())],
-            [['file'],  'file', 'extensions' => ['png', 'jpg', 'gif'], 'maxSize' => 1024*1024],
-            [['marketing_image_path', 'marketing_image_name'], 'string', 'max' => 45],
-            [['marketing_image_caption'], 'string', 'max' => 100],
-
-        ];
-    }
-
-    public function beforeValidate()
-    {
-        $this->marketing_image_name = preg_replace('/\s+/', '', $this->marketing_image_name);
-        $this->marketing_image_path = preg_replace('/\s+/', '', $this->marketing_image_path);
-
-        return parent::beforeValidate();
-    }
-
-    /**
-     * @inheritdoc
-     */
-
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'marketing_image_path' => 'Marketing Image Path',
-            'marketing_image_name' => 'Marketing Image Name',
-            'marketing_image_caption' => 'Caption',
-            'marketing_image_is_featured' => 'Marketing Image Is Featured',
-            'marketing_image_is_active' => 'Marketing Image Is Active',
-            'marketing_image_weight' => 'Marketing Image Weight',
-            'status_id' => 'Status ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'file' => 'Marketing Image',
-            'statusName' => Yii::t('app', 'Status'),
-        ];
-    }
-
-
-    public static function getMarketingImageIsFeaturedList()
-    {
-        return $droptions = [0 => "no", 1 => "yes"];
-    }
-
-    public static function getMarketingImageIsActiveList()
-    {
-        return $droptions = [0 => "no", 1 => "yes"];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-
-    public function getStatus()
-    {
-        return $this->hasOne(Status::className(), ['id' => 'status_id']);
-    }
-
-    /**
-     * * get status name
-     *
-     */
-
-    public function getStatusName()
-    {
-        return $this->status ? $this->status->status_name : '- no status -';
-    }
-
-    /**
-     * get list of statuses for dropdown
-     */
-
-    public static function getStatusList()
-    {
-        $droptions = Status::find()->asArray()->all();
-        return ArrayHelper::map($droptions, 'id', 'status_name');
-    }
+    $is_admin = PermissionHelpers::requireMinimumRole('Admin');
 
 }
+
+?>
+
+<div class="site-index">
+
+    <div class="jumbotron">
+
+        <h1>Welcome to Admin!</h1>
+
+        <p class="lead">
+
+            Now you can manage users, roles, and more with
+            our easy tools.
+
+        </p>
+
+        <p>
+
+            <?php
+
+            if (!Yii::$app->user->isGuest && $is_admin) {
+
+                echo Html::a('Manage Users', ['user/index'], ['class' => 'btn btn-
+                ++++lg btn-success']);
+
+            }
+
+            ?>
+
+        </p>
+
+    </div>
+
+    <div class="body-content">
+
+        <div class="row">
+            <div class="col-lg-4">
+
+                <h2>Users</h2>
+
+                <p>
+
+                    This is the place to manage users.  You can edit status and roles from here.
+                    The UI is easy to use and intuitive, just click the link below to get started.
+
+                </p>
+
+                <p>
+
+                    <?php
+
+                    if (!Yii::$app->user->isGuest && $is_admin) {
+
+                        echo Html::a('Manage Users', ['user/index'], ['class' => 'btn btn-default']);
+
+                    }
+
+                    ?>
+
+                </p>
+
+            </div>
+            <div class="col-lg-4">
+
+                <h2>Roles</h2>
+
+                <p>
+
+                    This is where you manage Roles.  You can decide who is admin and who is not.  You can
+                    add a new role if you like, just click the link below to get started.
+
+                </p>
+
+                <p>
+
+                    <?php
+
+                    if (!Yii::$app->user->isGuest && $is_admin) {
+
+                        echo Html::a('Manage Roles', ['role/index'], ['class' => 'btn btn-default']);
+
+                    }
+
+                    ?>
+
+                </p>
+
+            </div>
+            <div class="col-lg-4">
+
+                <h2>Profiles</h2>
+
+                <p>
+
+                    Need to review Profiles?  This is the place to get it done.
+                    These are easy to manage via UI. Just click the link below to manage profiles.
+
+                </p>
+
+                <p>
+
+                    <?php
+
+                    if (!Yii::$app->user->isGuest && $is_admin) {
+
+                        echo Html::a('Manage Profiles', ['profile/index'], ['class' => 'btn btn-default']);
+
+                    }
+
+                    ?>
+
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+
+                <h2>User Types</h2>
+
+                <p>
+
+                    This is the place to manage user types.  You can edit user
+                    types from here. The UI is easy to use and intuitive, just
+                    click the link  below to get started.
+
+                </p>
+
+                <p>
+
+                    <?php
+
+                    if (!Yii::$app->user->isGuest && $is_admin) {
+
+                        echo Html::a('Manage User Types', ['user-type/index'], ['class' => 'btn btn-default']);
+
+                    }
+
+                    ?>
+
+                </p>
+
+            </div>
+            <div class="col-lg-4">
+
+                <h2>Statuses</h2>
+
+                <p>
+
+                    This is where you manage Statuses.  You can add or delete.
+                    You can add a new status if you like, just click the link
+                    below to get started.
+
+                </p>
+
+                <p>
+
+                    <?php
+
+                    if (!Yii::$app->user->isGuest && $is_admin) {
+
+                        echo Html::a('Manage Statuses', ['status/index'], ['class' => 'btn btn-default']);
+
+                    }
+
+                    ?>
+
+                </p>
+
+            </div>
+            <div class="col-lg-4">
+
+                <h2>Placeholder</h2>
+
+                <p>
+
+                    Need to review Profiles?  This is the place to get it done.
+                    These are easy to manage via UI.  Just click the link below
+                    to manage profiles.
+
+                </p>
+
+                <p>
+
+                    <?php
+
+                    if (!Yii::$app->user->isGuest && $is_admin) {
+
+                        echo Html::a('Manage Profiles', ['profile/index'], ['class' => 'btn btn-default']);
+
+                    }
+
+                    ?>
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
