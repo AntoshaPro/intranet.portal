@@ -48,7 +48,7 @@ initial-scale=1">
 
         if (!Yii::$app->user->isGuest){
 
-            $is_admin = PermissionHelpers::requireMinimumRole('Admin');
+            $is_admin = PermissionHelpers::requireMinimumRole('');
 
             NavBar::begin([
 

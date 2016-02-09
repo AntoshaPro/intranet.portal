@@ -23,7 +23,11 @@
         "ivan-chkv/yii2-font-awesome": "2.0.0",
         "components/font-awesome": "4.5.0",
         "marekpetras/yii2-calendarview-widget": "dev-master",
-        "yiisoft/yii2-imagine": "2.0.0"
+        "yiisoft/yii2-imagine": "2.0.0",
+        "demogorgorn/yii2-superfish-menu": "dev-master",
+        "apaoww/yii2-oci8": "dev-master",
+        "nullref/yii2-datatables": "dev-master",
+        "tejrajs/yii2-fullcalendar": "0.0.2"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

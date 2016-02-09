@@ -4,9 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "772e66ac1c4c76d0e19de1a1eaeabba7",
-    "content-hash": "a49927a7b881a89ad71e25d50e8b7c26",
+    "hash": "03cf56208959ba5005914345d4d40aa5",
+    "content-hash": "89e6f0d9ae67d9370288439e727a15fd",
     "packages": [
+        {
+            "name": "apaoww/yii2-oci8",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apaoww/yii2-oci8.git",
+                "reference": "e0e83f85f200599a7d909a44e235836d55eda904"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apaoww/yii2-oci8/zipball/e0e83f85f200599a7d909a44e235836d55eda904",
+                "reference": "e0e83f85f200599a7d909a44e235836d55eda904",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "apaoww\\oci8\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Apa Oww",
+                    "email": "apa.oww@gmail.com"
+                }
+            ],
+            "description": "Oci8 Driver for Yii2 ",
+            "keywords": [
+                "oci8",
+                "yii"
+            ],
+            "time": "2015-07-08 06:13:38"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v3.3.5",
@@ -55,6 +100,70 @@
                 "responsive",
                 "web"
             ]
+        },
+        {
+            "name": "bower-asset/datatables",
+            "version": "1.10.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DataTables/DataTables.git",
+                "reference": "e2456455445801ec6bcd2467247fa2e030ab8b4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DataTables/DataTables/zipball/e2456455445801ec6bcd2467247fa2e030ab8b4a",
+                "reference": "e2456455445801ec6bcd2467247fa2e030ab8b4a",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "media/js/jquery.dataTables.js",
+                    "media/css/jquery.dataTables.css",
+                    "media/images/sort_asc.png",
+                    "media/images/sort_asc_disabled.png",
+                    "media/images/sort_both.png",
+                    "media/images/sort_desc.png",
+                    "media/images/sort_desc_disabled.png"
+                ],
+                "bower-asset-ignore": [
+                    "/.*",
+                    "examples",
+                    "media/unit_testing",
+                    "composer.json",
+                    "dataTables.jquery.json",
+                    "package.json"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "datatables",
+                "javascript",
+                "jquery",
+                "library",
+                "table"
+            ]
+        },
+        {
+            "name": "bower-asset/datatables-plugins",
+            "version": "1.10.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DataTables/Plugins.git",
+                "reference": "1d8f976a889b57bb865e3bb30ddd19cd3faea50c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DataTables/Plugins/zipball/1d8f976a889b57bb865e3bb30ddd19cd3faea50c",
+                "reference": "1d8f976a889b57bb865e3bb30ddd19cd3faea50c",
+                "shasum": ""
+            },
+            "type": "bower-asset-library"
         },
         {
             "name": "bower-asset/font-awesome",
@@ -343,6 +452,51 @@
             ],
             "description": "The iconic font designed for use with Twitter Bootstrap.",
             "time": "2015-11-24 10:33:56"
+        },
+        {
+            "name": "demogorgorn/yii2-superfish-menu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/demogorgorn/yii2-superfish-menu.git",
+                "reference": "ade6a3a42a20b19adcb45becf2d4b9f656f5e59e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/demogorgorn/yii2-superfish-menu/zipball/ade6a3a42a20b19adcb45becf2d4b9f656f5e59e",
+                "reference": "ade6a3a42a20b19adcb45becf2d4b9f656f5e59e",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "demogorgorn\\superfish\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Martemjanov",
+                    "email": "demogorgorn@gmail.com",
+                    "homepage": "http://foreign.by"
+                }
+            ],
+            "description": "Yii2 superfish jQuery menu widget",
+            "homepage": "https://github.com/demogorgorn/yii2-superfish-menu",
+            "keywords": [
+                "extension",
+                "menu",
+                "superfish",
+                "widget",
+                "yii"
+            ],
+            "time": "2016-01-29 14:58:12"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -732,6 +886,64 @@
             "time": "2015-11-10 04:11:31"
         },
         {
+            "name": "nullref/yii2-datatables",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NullRefExcep/yii2-datatables.git",
+                "reference": "7070ddcef70da5bc38ad96c27c22eec67fda3edd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NullRefExcep/yii2-datatables/zipball/7070ddcef70da5bc38ad96c27c22eec67fda3edd",
+                "reference": "7070ddcef70da5bc38ad96c27c22eec67fda3edd",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/datatables": "~1.10",
+                "bower-asset/datatables-plugins": "~1.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "nullref\\datatable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Serhiy Vinichuk",
+                    "email": "serhiyvinichuk@gmail.com"
+                },
+                {
+                    "name": "Dmytro Karpovych",
+                    "email": "zayec77@gmail.com"
+                }
+            ],
+            "description": "Yii2 Extension for DataTables jQuery plug-in",
+            "homepage": "https://github.com/NullRefExcep/yii2-datatables",
+            "keywords": [
+                "datatable",
+                "datatables",
+                "jquery",
+                "plugin",
+                "widget",
+                "yii",
+                "yii2"
+            ],
+            "time": "2015-10-28 03:28:30"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.1",
             "source": {
@@ -783,6 +995,48 @@
                 "mailer"
             ],
             "time": "2015-06-06 14:19:39"
+        },
+        {
+            "name": "tejrajs/yii2-fullcalendar",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tejrajs/yii2-fullcalendar.git",
+                "reference": "cf69107400e1cd237823a38c6cb00e98d696d141"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tejrajs/yii2-fullcalendar/zipball/cf69107400e1cd237823a38c6cb00e98d696d141",
+                "reference": "cf69107400e1cd237823a38c6cb00e98d696d141",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "tejrajs\\fullcalendar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tej Raj Shrestha",
+                    "email": "helloteju96@gmail.com"
+                }
+            ],
+            "description": "Just A Fullcalendar Yii2 Widget  ",
+            "homepage": "https://github.com/tejrajs/yii2-fullcalendar#readme",
+            "keywords": [
+                "extension",
+                "fullcalendar",
+                "yii2"
+            ],
+            "time": "2015-07-22 11:22:36"
         },
         {
             "name": "yiisoft/yii2",
@@ -924,20 +1178,20 @@
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-composer.git",
-                "reference": "ca8d23707ae47d20b0454e4b135c156f6da6d7be"
+                "reference": "7452fd908a5023b8bb5ea1b123a174ca080de464"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/ca8d23707ae47d20b0454e4b135c156f6da6d7be",
-                "reference": "ca8d23707ae47d20b0454e4b135c156f6da6d7be",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/7452fd908a5023b8bb5ea1b123a174ca080de464",
+                "reference": "7452fd908a5023b8bb5ea1b123a174ca080de464",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "1.0.0"
+                "composer-plugin-api": "^1.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -967,7 +1221,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2015-03-01 06:22:44"
+            "time": "2016-02-06 00:49:24"
         },
         {
             "name": "yiisoft/yii2-imagine",
@@ -1454,7 +1708,10 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kartik-v/yii2-social": 20,
-        "marekpetras/yii2-calendarview-widget": 20
+        "marekpetras/yii2-calendarview-widget": 20,
+        "demogorgorn/yii2-superfish-menu": 20,
+        "apaoww/yii2-oci8": 20,
+        "nullref/yii2-datatables": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

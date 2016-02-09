@@ -7,14 +7,14 @@ use kartik\social\FacebookPlugin;
 use \yii\bootstrap\Collapse;
 use \yii\bootstrap\Alert;
 use yii\helpers\Html;
-use common\models\NormativeBase;
+
 
 $this->title = 'НПЦАП';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Корпоративный портал НПЦАП</h1>
+        <!--<h1>Корпоративный портал НПЦАП</h1>-->
         <?php if(Yii::$app->user->isGuest){
             echo Html::a('Начать работу',['site/login'],
                 ['class'=> 'btn btn-lg btn-success']
@@ -22,7 +22,6 @@ $this->title = 'НПЦАП';
     </div>
 
     <div class="body-content">
-    <?= Html::img(Yii::$app->urlManagerBackend->baseUrl.'/uploads/image.png');?>
         </div>
 
     </div>
