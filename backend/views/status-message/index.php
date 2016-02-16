@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel frontend\models\search\StatusMessageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Status Messages';
+$this->title = 'Автоматические события';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-message-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Status Message', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать Автоматическое событие', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

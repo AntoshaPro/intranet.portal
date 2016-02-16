@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\StatusMessage */
 
-$this->title = 'Create Status Message';
-$this->params['breadcrumbs'][] = ['label' => 'Status Messages', 'url' => ['index']];
+$this->title = 'Создать Автоматическое событие';
+$this->params['breadcrumbs'][] = ['label' => 'Автоответчики', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-message-create">

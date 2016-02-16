@@ -16,21 +16,20 @@ use common\models\User;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'username') ?>
 
     <?php echo $form->field($model, 'email') ?>
 
-    <?= $form->field($model, 'role_id')->dropDownList(User::getroleList(), [ 'prompt' => 'Please Choose One' ]);?>
+    <?= $form->field($model, 'role_id')->dropDownList(User::getroleList(), [ 'prompt' => 'Выбрать роль' ]);?>
 
-    <?= $form->field($model, 'user_type_id')->dropDownList(User::getuserTypeList(), [ 'prompt' => 'Please Choose One' ]);?>
+    <?= $form->field($model, 'user_type_id')->dropDownList(User::getuserTypeList(), [ 'prompt' => 'Выбрать тип' ]);?>
 
-    <?= $form->field($model, 'status_id')->dropDownList($model->statusList, [ 'prompt' => 'Please Choose One' ]);?>
+    <?= $form->field($model, 'status_id')->dropDownList($model->statusList, [ 'prompt' => 'Выбрать статус' ]);?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -26,7 +26,7 @@
         "yiisoft/yii2-imagine": "2.0.0",
         "demogorgorn/yii2-superfish-menu": "dev-master",
         "apaoww/yii2-oci8": "dev-master",
-        "nullref/yii2-datatables": "dev-master",
+        "fedemotta/yii2-widget-datatables": "*",
         "tejrajs/yii2-fullcalendar": "0.0.2"
     },
     "require-dev": {

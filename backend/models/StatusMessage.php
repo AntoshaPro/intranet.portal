@@ -24,13 +24,13 @@ class StatusMessage extends \yii\db\ActiveRecord
 {
     public function behaviors()
     {
-        return[
-            'timestamp'=>[
-                'class'=>'yii\behaviors\TimestampBehavior',
-                'attributes'=>[
+        return [
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
 
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE =>['updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
                 'value' => new Expression('NOW()'),
             ],
@@ -51,11 +51,21 @@ class StatusMessage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['controller_name', 'action_name', 'status_message_name', 'subject', 'body', 'status_message_description'], 'required'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['controller_name', 'action_name', 'status_message_name'], 'string', 'max' => 105],
-            [['subject', 'status_message_description'], 'string', 'max' => 255],
-            [['body'], 'string', 'max' => 2025]
+            [
+                ['controller_name', 'action_name', 'status_message_name', 'subject', 'body', 'status_message_description'],
+                'required'],
+            [
+                ['created_at', 'updated_at'],
+                'safe'],
+            [
+                ['controller_name', 'action_name', 'status_message_name'],
+                'string', 'max' => 105],
+            [
+                ['subject', 'status_message_description'],
+                'string', 'max' => 255],
+            [
+                ['body'],
+                'string', 'max' => 2025]
         ];
     }
 
@@ -65,15 +75,15 @@ class StatusMessage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'controller_name' => 'Controller Name',
-            'action_name' => 'Action Name',
-            'status_message_name' => 'Status Message Name',
-            'subject' => 'Subject',
-            'body' => 'Body',
-            'status_message_description' => 'Status Message Description',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id' => 'Идентификатор',
+            'controller_name' => 'Название контроллера',
+            'action_name' => 'Название действия',
+            'status_message_name' => 'Название сообщения',
+            'subject' => 'Тема',
+            'body' => 'Текст',
+            'status_message_description' => 'Примечание',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
         ];
     }
 }

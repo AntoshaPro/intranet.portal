@@ -48,7 +48,7 @@ initial-scale=1">
 
         if (!Yii::$app->user->isGuest){
 
-            $is_admin = PermissionHelpers::requireMinimumRole('');
+            $is_admin = PermissionHelpers::requireMinimumRole('SuperUser');
 
             NavBar::begin([
 
@@ -120,6 +120,7 @@ initial-scale=1">
                         ['label' => 'Автоответчик', 'url' => ['status-message/index']],
                         ['label' => 'ЧАВО', 'url' => ['faq/index']],
                         ['label' => 'Категории ЧАВО', 'url' => ['faq-category/index']],
+                        ['label' => 'Дракон-Тест', 'url' => ['drakon/index']],
                     ]],
 
                 ],

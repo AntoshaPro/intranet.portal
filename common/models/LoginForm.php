@@ -12,7 +12,7 @@ class LoginForm extends Model
 {
     public $username;
     public $password;
-    public $rememberMe = true;
+    public $rememberMe = false;
 
     private $_user = false;
 
@@ -33,6 +33,20 @@ class LoginForm extends Model
         ];
     }
 
+
+    /**
+     * Перегрузка родительского метода модели Model
+     * @return array
+     */
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => Yii::t("app", "Логин"),
+            'password' => Yii::t("app", "Пароль"),
+        ];
+    }
+
     /**
      * Validates the password.
      * This method serves as the inline validation for password.
@@ -41,12 +55,14 @@ class LoginForm extends Model
      * @param array $params the additional name-value pairs given in the rule
      */
 
+
+
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Не правильное имя пользователя или пароль. Повторите попытку.');
             }
         }
     }
@@ -77,7 +93,7 @@ class LoginForm extends Model
 
         } else {
 
-            throw new NotFoundHttpException('You Shall Not Pass.');
+            throw new NotFoundHttpException('Не смог! Попробуй ещё разок.');
 
         }
 
@@ -97,4 +113,6 @@ class LoginForm extends Model
 
         return $this->_user;
     }
+
+
 }

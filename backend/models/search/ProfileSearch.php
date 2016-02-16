@@ -55,8 +55,8 @@ class ProfileSearch extends Profile
                 ],
                 'profileIdLink' => [
                     'asc' => ['profile.id' => SORT_ASC],
-                    'desc' => ['Profile.id' => SORT_DESC],
-                    'label' => 'ID'
+                    'desc' => ['profile.id' => SORT_DESC],
+                    'label' => 'Profile'
                 ],
                 'userLink' => [
                     'asc' => ['user.username' => SORT_ASC],

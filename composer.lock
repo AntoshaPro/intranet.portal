@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "03cf56208959ba5005914345d4d40aa5",
-    "content-hash": "89e6f0d9ae67d9370288439e727a15fd",
+    "hash": "bb8488699575d380b335fdff1a23ed72",
+    "content-hash": "9375597d5f7e4099d8ca5a19bff30c46",
     "packages": [
         {
             "name": "apaoww/yii2-oci8",
@@ -150,20 +150,46 @@
             ]
         },
         {
-            "name": "bower-asset/datatables-plugins",
-            "version": "1.10.10",
+            "name": "bower-asset/datatables-bootstrap3",
+            "version": "0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/DataTables/Plugins.git",
-                "reference": "1d8f976a889b57bb865e3bb30ddd19cd3faea50c"
+                "url": "https://github.com/Jowin/Datatables-Bootstrap3.git",
+                "reference": "06d78a732dfd1da928ff118dd26249ae94021495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DataTables/Plugins/zipball/1d8f976a889b57bb865e3bb30ddd19cd3faea50c",
-                "reference": "1d8f976a889b57bb865e3bb30ddd19cd3faea50c",
+                "url": "https://api.github.com/repos/Jowin/Datatables-Bootstrap3/zipball/06d78a732dfd1da928ff118dd26249ae94021495",
+                "reference": "06d78a732dfd1da928ff118dd26249ae94021495",
                 "shasum": ""
             },
             "type": "bower-asset-library"
+        },
+        {
+            "name": "bower-asset/datatables-tabletools",
+            "version": "2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DataTables/TableTools.git",
+                "reference": "5fc9d457b673fe3f2d84f32660ee74e29ce6f84e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DataTables/TableTools/zipball/5fc9d457b673fe3f2d84f32660ee74e29ce6f84e",
+                "reference": "5fc9d457b673fe3f2d84f32660ee74e29ce6f84e",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/datatables": ">=1.9.0",
+                "bower-asset/jquery": ">=1.7.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "js/dataTables.tableTools.js",
+                    "css/dataTables.tableTools.css"
+                ]
+            }
         },
         {
             "name": "bower-asset/font-awesome",
@@ -592,6 +618,60 @@
             "time": "2015-04-03 20:31:47"
         },
         {
+            "name": "fedemotta/yii2-widget-datatables",
+            "version": "v1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fedemotta/yii2-widget-datatables.git",
+                "reference": "ee0c70a038302ca414fe01d51732ed217efdc772"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fedemotta/yii2-widget-datatables/zipball/ee0c70a038302ca414fe01d51732ed217efdc772",
+                "reference": "ee0c70a038302ca414fe01d51732ed217efdc772",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/datatables": ">= 1.9.4",
+                "bower-asset/datatables-bootstrap3": "*",
+                "bower-asset/datatables-tabletools": "*",
+                "bower-asset/jquery": ">= 1.7.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "fedemotta\\datatables\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Federico Nicolás Motta",
+                    "email": "fedemotta@gmail.com"
+                }
+            ],
+            "description": "DataTables widget for Yii2",
+            "keywords": [
+                "datatables",
+                "extension",
+                "javascript",
+                "jquery",
+                "library",
+                "table",
+                "yii2"
+            ],
+            "time": "2015-06-08 16:07:23"
+        },
+        {
             "name": "fortawesome/font-awesome",
             "version": "v4.2.0",
             "source": {
@@ -884,64 +964,6 @@
                 "yii2"
             ],
             "time": "2015-11-10 04:11:31"
-        },
-        {
-            "name": "nullref/yii2-datatables",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/NullRefExcep/yii2-datatables.git",
-                "reference": "7070ddcef70da5bc38ad96c27c22eec67fda3edd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/NullRefExcep/yii2-datatables/zipball/7070ddcef70da5bc38ad96c27c22eec67fda3edd",
-                "reference": "7070ddcef70da5bc38ad96c27c22eec67fda3edd",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/datatables": "~1.10",
-                "bower-asset/datatables-plugins": "~1.0",
-                "php": ">=5.4.0",
-                "yiisoft/yii2": "~2.0"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "asset-installer-paths": {
-                    "bower-asset-library": "vendor/bower"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "nullref\\datatable\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Serhiy Vinichuk",
-                    "email": "serhiyvinichuk@gmail.com"
-                },
-                {
-                    "name": "Dmytro Karpovych",
-                    "email": "zayec77@gmail.com"
-                }
-            ],
-            "description": "Yii2 Extension for DataTables jQuery plug-in",
-            "homepage": "https://github.com/NullRefExcep/yii2-datatables",
-            "keywords": [
-                "datatable",
-                "datatables",
-                "jquery",
-                "plugin",
-                "widget",
-                "yii",
-                "yii2"
-            ],
-            "time": "2015-10-28 03:28:30"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1710,8 +1732,7 @@
         "kartik-v/yii2-social": 20,
         "marekpetras/yii2-calendarview-widget": 20,
         "demogorgorn/yii2-superfish-menu": 20,
-        "apaoww/yii2-oci8": 20,
-        "nullref/yii2-datatables": 20
+        "apaoww/yii2-oci8": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

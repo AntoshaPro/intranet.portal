@@ -76,14 +76,27 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'ID пользователя',
+            'user_id' => 'Идентификатор',
             'first_name' => 'Имя',
             'second_name' => 'Отчество',
             'last_name' => 'Фамилия',
             'birthdate' => 'Дата рождения',
             'gender_id' => 'Пол',
-            'created_at' => 'Создано',
-            'updated_at' => 'Изменено',
+            'roleName' => Yii::t('app', 'Роль'),
+            'statusName' => Yii::t('app', 'Статус'),
+            'status_id' => Yii::t('app','Статус'),
+            'profileId' => Yii::t('app', 'Профиль'),
+            'profileIdLink' => Yii::t('app', 'Профиль'),
+            'userLink' => Yii::t('app', 'Пользователь'),
+            'username' => Yii::t('app', 'Пользователь'),
+            'userTypeName' => Yii::t('app', 'Тип пользователя'),
+            'userTypeId' => Yii::t('app', 'Тип пользователя'),
+            'userIdLink' => Yii::t('app', 'Идентификатор'),
+            'role_id'=> Yii::t('app', 'Роль'),
+            'user_type_id' => Yii::t('app', 'Тип пользователя'),
+            'email' => Yii::t('app', 'Почта'),
+
+
         ];
     }
 
@@ -162,7 +175,7 @@ class Profile extends \yii\db\ActiveRecord
     {
         $url = Url::to(['profile/update', 'id'=>$this->id]);
         $options = [];
-        return Html::a($this->id, $url, $options);
+        return Html::a($this->username, $url, $options);
     }
 
     public function getProfile(){

@@ -8,7 +8,7 @@ use \yii\bootstrap\Collapse;
 /* @var $searchModel backend\models\search\ProfileSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Profiles';
+$this->title = 'Профили';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="profile-index">
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'items' => [
             // equivalent to the above
             [
-                'label' => 'Search',
+                'label' => 'Поиск',
                 'content' => $this->render('_search', ['model' => $searchModel]) ,
                 // open its content by default
                 //'contentOptions' => ['class' => 'in']
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn', 'visible'=> false],
 
             //'id',
             ['attribute'=>'profileIdLink', 'format'=>'raw'],

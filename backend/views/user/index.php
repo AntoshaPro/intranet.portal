@@ -40,10 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn', 'visible'=> false],
 
             //'id',
-            ['attribute'=>'userIdLink', 'format'=>'raw'],
+            //['attribute'=>'userIdLink', 'format'=>'raw'],
             ['attribute'=>'userLink', 'format'=>'raw'],
             ['attribute'=>'profileLink', 'format'=>'raw'],
 

@@ -94,7 +94,7 @@ AppAsset::register($this);
                     ['label' => 'Заказ пропуска', 'url' => ['/propusk/index']],
                     ['label' => 'Корреспонденция', 'url' => ['/korrespond/index']],
                     ['label' => 'Полезные документы', 'url' => ['/polesnie-dok/index']],
-                    // ['label' => 'Something else here', 'url' => ['#']],
+
                 ]],
                 ['label' => 'СЭД', 'items' => [
                     ['label' => 'Распоряжения', 'url' => ['/support/index']],
@@ -103,9 +103,7 @@ AppAsset::register($this);
                 ]],
 
                 ['label' => 'Поддержка', 'items' => [
-                    ['label' => 'Запрос в поддержку', 'url' => ['/support/index']],
-                    ['label' => 'ЧАВО', 'url' => ['/faq/index']],
-                    ['label' => 'ЧАВО Категории', 'url' => ['/faq-category/index']],
+                    ['label' => 'Помощь', 'url' => ['/faq/index']],
                     ['label' => 'Календарь', 'url' => ['/calendar/index']],
                 ]],
 

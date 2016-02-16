@@ -165,9 +165,9 @@ $this->title = 'Календарь';
                 <thead>
                 <tr class="info">
                     <th></th>
-                    <th>апрель</th>
-                    <th>май</th>
-                    <th>июнь</th>
+                    <th>Апрель</th>
+                    <th>Май</th>
+                    <th>Июнь</th>
                     <th>II кв.</th>
                     <th>1-е п/г</th>
                 </tr>
@@ -236,9 +236,9 @@ $this->title = 'Календарь';
                 <thead>
                 <tr class="info  uppercase">
                     <th></th>
-                    <th>июль</th>
-                    <th>август</th>
-                    <th>сентябрь</th>
+                    <th>Июль</th>
+                    <th>Август</th>
+                    <th>Сентябрь</th>
                     <th>III кв.</th>
                 </tr>
                 </thead>
@@ -300,9 +300,9 @@ $this->title = 'Календарь';
                 <thead>
                 <tr class="info">
                     <th></th>
-                    <th>октябрь</th>
-                    <th>ноябрь</th>
-                    <th>декабрь</th>
+                    <th>Октябрь</th>
+                    <th>Ноябрь</th>
+                    <th>Декабрь</th>
                     <th>IV кв.</th>
                     <th>2-е п/г</th>
                     <th><?=date('Y')?> г.</th>

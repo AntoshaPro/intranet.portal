@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\search\ProfileSearch */
+/* @var $searchModel backend\models\search\ProfileSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Профиль';
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            'username',
             'user_id',
             'first_name:ntext',
             'second_name:ntext',

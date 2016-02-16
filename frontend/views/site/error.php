@@ -21,7 +21,7 @@ $this->title = $name;
         The above error occurred while the Web server was processing your request.
     </p>
     <p>
-        Please contact us if you think this is a server error. Thank you.
+        Свяжитесь с нами, если считаете, что это ошибка сервера. Спасибо.
     </p>
 
 </div>

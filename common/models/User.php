@@ -100,15 +100,22 @@ class User extends ActiveRecord implements IdentityInterface
 
             /* Your other attribute labels */
 
-            'roleName' => Yii::t('app', 'Role'),
-            'statusName' => Yii::t('app', 'Status'),
-            'profileId' => Yii::t('app', 'Profile'),
-            'profileLink' => Yii::t('app', 'Profile'),
-            'userLink' => Yii::t('app', 'User'),
-            'username' => Yii::t('app', 'User'),
-            'userTypeName' => Yii::t('app', 'User Type'),
-            'userTypeId' => Yii::t('app', 'User Type'),
-            'userIdLink' => Yii::t('app', 'ID'),
+            'roleName' => Yii::t('app', 'Роль'),
+            'statusName' => Yii::t('app', 'Статус'),
+            'status_id' => Yii::t('app','Статус'),
+            'profileId' => Yii::t('app', 'Профиль'),
+            'profileLink' => Yii::t('app', 'Профиль'),
+            'userLink' => Yii::t('app', 'Пользователь'),
+            'username' => Yii::t('app', 'Пользователь'),
+            'userTypeName' => Yii::t('app', 'Тип пользователя'),
+            'userTypeId' => Yii::t('app', 'Тип пользователя'),
+            'userIdLink' => Yii::t('app', 'Идентификатор'),
+            'role_id'=> Yii::t('app', 'Роль'),
+            'user_type_id' => Yii::t('app', 'Тип пользователя'),
+            'email' => Yii::t('app', 'Почта'),
+            'created_at' => Yii::t('app', 'Дата создания'),
+
+
 
         ];
     }
@@ -329,7 +336,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getProfileId()
     {
-        return $this->profile ? $this->profile->id : 'none';
+        return $this->profile ? $this->profile->id : 'Профиль не создан';
     }
 
     /**
@@ -341,7 +348,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $url = Url::to(['profile/view', 'id'=>$this->profileId]);
         $options = [];
-        return Html::a($this->profile ? 'profile' : 'none', $url, $options);
+        return Html::a($this->profile ? $this->username : 'Профиль не создан', $url, $options);
     }
 
     /**
