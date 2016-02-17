@@ -12,7 +12,7 @@ class MailCall
     {
         return Yii::$app->mailer->compose()
             ->setTo(\Yii::$app->user->identity->email)
-            ->setFrom(['proskurin@npc.local' => 'НПЦАП'])
+            ->setFrom(['proskurin@npc.local' => 'ФГУП "НПЦАП"'])
             ->setSubject(RecordHelpers::getMessageSubject($message_id))
             ->setTextBody(RecordHelpers::getMessageBody($message_id))
             ->send();
